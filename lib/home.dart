@@ -4,13 +4,16 @@ import 'package:test_2/model.dart';
 import 'package:test_2/provider.dart';
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final commentProvider =
         Provider.of<CommentProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Comments'),
+        title: const Text('Testing', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.blue,
       ),
       body: FutureBuilder(
         future: commentProvider.fetchComments(),
@@ -34,18 +37,38 @@ class MyHomePage extends StatelessWidget {
                   background: Container(
                     color: Colors.red,
                     alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 16.0),
-                      child: Icon(Icons.delete, color: Colors.white),
-                    ),
+                    padding: const EdgeInsets.only(right: 16.0),
+                    child: const Icon(Icons.delete, color: Colors.white),
                   ),
-                  child: ListTile(
-                    title: Text(comment.name),
-                    subtitle: Text(comment.email),
-                    trailing: const Icon(Icons.arrow_forward),
-                    onTap: () {
-                      // Add onTap functionality if needed
-                    },
+                  child: Card(
+                    elevation: 4,
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            comment.name,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          Text(
+                            comment.email,
+                            style: const TextStyle(color: Colors.grey),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            comment.body,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 );
               },

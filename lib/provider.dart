@@ -27,7 +27,11 @@ class CommentProvider extends ChangeNotifier {
   }
 
   void removeComment(int index) {
-    _comments.removeAt(index);
-    notifyListeners();
+    try {
+      _comments.removeAt(index);
+      notifyListeners();
+    } catch (e) {
+      print("Error removing comment: $e");
+    }
   }
 }
