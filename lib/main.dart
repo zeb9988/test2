@@ -16,11 +16,12 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => CommentProvider(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'test app',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const MyHomePage(),
+        home: MyHomePage(),
       ),
     );
   }
