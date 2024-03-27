@@ -4,8 +4,6 @@ import 'package:test_2/model.dart';
 import 'package:test_2/provider.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     final commentProvider =
